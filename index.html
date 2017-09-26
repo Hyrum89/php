@@ -1,13 +1,9 @@
 <!Doctype html>
 
-<html>
-<head><title>php page </title></head>
 <meta charset="UTF-8">
-
+<html>
+<head><title>Who am I </title></head>
 <form method="post" action="WhoYouAre.php">
-
-<?php
-
 <h2 style="text-align:center"> Who Am I </h2>
 <div style="text-align:center">
 <label for="userName">Name :</label> <input type="text" name="username" id="username"/><br/><br/>
@@ -19,46 +15,6 @@
 <input type="radio" name="sex" id="gender" sex="Female" /> Female <br/>
 <input type="radio" name="sex" id="gender" sex="Other" /> Other <br/><br/>
 <input type="submit" value="Submit">
-
-
-
-
-$name = $_POST["username"];
-$age = $_POST["age"];
-$address = $_POST["address"];
-$state = $_POST["state"];
-$sex = $_POST["sex"];
-if($sex == "Male")
-{
-printf('<body style="background-color:blue">');
-}
-else
-{
-printf('<body>');
-}
-printf('<div style="text-align:center">');
-printf("Name = %s<br/>",$name);
-printf("Age = %u<br/>",$age);
-printf("Address = %s<br/>",$address);
-printf("State = %s<br/>",$state);
-printf("Sex = %s<br/><br/>",$sex);
-$curYear = date("Y");
-for($i=0;$i <= $age;$i++){
-printf("%u\t",$curYear);
-$curYear = $curYear - 1;
-}
-printf("<br/><br/>");
-$filename = "PostPage.txt";
-$myFile = fopen($filename,"r") or die("Unable to open the file!");
-while(!feof($myFile)){
-$line = fgets($myFile);
-printf("%s<br/>",$line);
-}
-fclose($myFile);
-printf('</div>');
-?>
 </div>
 </form>
-</html>
-</body>
 </html>
