@@ -1,116 +1,64 @@
-<!DOCTYPE html>
+<!Doctype html>
+
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA19fXAMCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIBAQECAgICAgICAQEBAgICAQABAgICAgICAgEAAQICAgEAAQECAgECAgEBAAEBAgIBAAAAAQEAAQEAAQAAAAEBAQABAQABAAEBAAEAAQEAAQEAAQEAAQABAQABAAEBAAEBAAEBAAEAAQEAAQABAQABAQAAAAEBAAAAAQEAAAABAQIBAQECAQABAQICAQEBAgICAgICAgEAAQICAgICAgICAgICAgIBAQECAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
-        <title>Story Idea Generator</title>
-        <style>
-            body {
-                font-family: "Trebuchet MS", Verdana, sans-serif;
-                font-size: 16px;
-                background-color: dimgrey; 
-                color: #696969;
-                padding: 3px;
-            }
+<head><title>php page </title></head>
+<meta charset="UTF-8">
 
-            #main {
-                padding: 5px;
-                padding-left:  15px;
-                padding-right: 15px;
-                background-color: #ffffff;
-                border-radius: 0 0 5px 5px;
-            }
+<form method="post" action="WhoYouAre.php">
 
-            h1 {
-                font-family: Georgia, serif;
-                border-bottom: 3px solid #cc9900;
-                color: #996600;
-                font-size: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Story Idea Generator</h1>
-        <div id="main">
-            <form action="ce04assignmentphp.php" method="post">
-                <?php
-                
-                if ($_POST['sneaky'] == 0) 
-                {
-                    print <<<HTML
-                
+<?php
 
-                 Please Create a Character to put into the story.<br>
-                    Name: <input type="text" name="Name"><br>
-                Age: <input type="number" name="Age"><br>
-                Gender: F<input type="radio" value="F" name="Gender" checked="true">  M<input type="radio" value="M" name="Gender"><br>
-                Class: <select name="Class">
-                    <option value="Detective">Detective</option>
-                    <option value="Scientist">Scientist</option>
-                    <option value="Soldier">Soldier</option>
-                    <option value="Doctor">Doctor</option>
-                </select><br>
-                <input type="submit" value="Show Me" name="Create"><br>
-                <input type="hidden" value ="1" name="sneaky">  
-                   
-HTML;
-                    
-                   }
-                    else 
-                    {
-                    $name = htmlentities($_POST('Name'));
-                    $name = strtolwer($Name);    
-                    $name = ucwords($Name); 
-                    $age = $_Post('Age'); 
-                    $gender = $_POST('Gender'); 
-                            
-                    $class = $_POST('Class');
-                          
-                    
-                          
-                 $settings = explode("\n", file_get_contents('settings.txt'));
-                 $objectives = explode("\n", file_get_contents('objectives.txt'));
-                 $antagonists = explode("\n", file_get_contents('antagonists.txt'));  
-                 $complications = explode("\n", file_get_contents('complications.txt'));       
-                    
-                
-                            shuffle($settings);
-                            shuffle($objectives);
-                            shuffle($antagonists);
-                            shuffle($complications);
-                            
-                            if ($gender == "F")
-                            {
-                                $title = "Lady";
-                            }
-                            
-                            else
-                            {
-                            
-                             $title = "Man";  
-                            }
-                            
-                            printf("This is a story about a %s named % s<br> at only the age of %d is a %s<br>"
-                                    . "This is the start of the story....<br>", $title, $name, $age, $class);
-                            
-                            echo '<ul><li>' . $settings[0] . '</li><li>'
-                            . $objectives[0] . '</li><li>'
-                            . $antagonists[0] . '</li><li>'   
-                            . $complications[0] . "</li></ul><br>"    
-                            ."<input type='submit' value='Try Again' name='create'><br>"
-                            ."<input type='hidden' value='0' name='sneaky'>";
-                    }
+<h2 style="text-align:center"> Who Am I </h2>
+<div style="text-align:center">
+<label for="userName">Name :</label> <input type="text" name="username" id="username"/><br/><br/>
+<label for="age">Age :</label> <input type="number" name="age" id="age"/><br/><br/>
+<label for="address">Address :</label> <input type="text" name="address" id="address"/><br/><br/>
+<label for="state">State :</label> <input type="text" name="state" id="state"/><br/><br/>
+<label for="sex">Sex :</label><br/>
+<input type="radio" name="sex" id="sex" value="Male" checked/> Male <br/>
+<input type="radio" name="sex" id="gender" sex="Female" /> Female <br/>
+<input type="radio" name="sex" id="gender" sex="Other" /> Other <br/><br/>
+<input type="submit" value="Submit">
 
-                                
-                             ?>    
-                         
-                          
-                         
-                         </form>
-      
-   </div>
-                           ?>
-    </body>
+
+
+
+$name = $_POST["username"];
+$age = $_POST["age"];
+$address = $_POST["address"];
+$state = $_POST["state"];
+$sex = $_POST["sex"];
+if($sex == "Male")
+{
+printf('<body style="background-color:blue">');
+}
+else
+{
+printf('<body>');
+}
+printf('<div style="text-align:center">');
+printf("Name = %s<br/>",$name);
+printf("Age = %u<br/>",$age);
+printf("Address = %s<br/>",$address);
+printf("State = %s<br/>",$state);
+printf("Sex = %s<br/><br/>",$sex);
+$curYear = date("Y");
+for($i=0;$i <= $age;$i++){
+printf("%u\t",$curYear);
+$curYear = $curYear - 1;
+}
+printf("<br/><br/>");
+$filename = "PostPage.txt";
+$myFile = fopen($filename,"r") or die("Unable to open the file!");
+while(!feof($myFile)){
+$line = fgets($myFile);
+printf("%s<br/>",$line);
+}
+fclose($myFile);
+printf('</div>');
+?>
+</div>
+</form>
 </html>
-
-
+</body>
+</html>
